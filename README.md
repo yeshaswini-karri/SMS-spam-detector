@@ -12,8 +12,56 @@ Installation
 
 1. Clone the repository:
 
-bash
-Copy code
 git clone https://github.com/yourusername/sms-spam-detector.git
 cd sms-spam-detector
+
+2. Install the required packages:
+
+pip install -r requirements.txt
+
+3. Download NLTK stopwords:
+
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+
+4.Ensure SSL certificates are available:
+Set the SSL_CERT_FILE environment variable if necessary:
+
+import os
+os.environ["SSL_CERT_FILE"]= "/path/to/your/certificate.pem"
+
+
+Usage
+
+
+1. Run the Streamlit app:
+
+streamlit run app.py
+
+2.Enter an SMS message in the text input box and receive a prediction indicating whether the message is spam or not.
+
+Code Overview
+
+data: Contains the spam_data.csv file used for training the model.
+app.py: Main script to run the Streamlit app.
+model.pkl: Pickle file containing the trained logistic regression model and CountVectorizer.
+utils.py: Contains helper functions for text preprocessing and model prediction.
+Model Training
+
+The logistic regression model was trained using a dataset of SMS messages labeled as spam or ham. The text was preprocessed to remove stopwords and vectorized using CountVectorizer. The model was then trained and saved as a pickle file (model.pkl) for deployment.
+
+Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+License
+
+This project is licensed under the MIT License.
+
+Acknowledgments
+
+This project uses Streamlit, NLTK, and scikit-learn.
+
+
 
