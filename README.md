@@ -1,67 +1,70 @@
-# SMS-spam-detector-Streamlit
-This repository contains the code for an SMS Spam Detector built using Python, NLTK, and scikit-learn. The application preprocesses SMS messages to remove stopwords, vectorizes the text using CountVectorizer, and uses a trained logistic regression model to predict whether a message is spam or not.
+# SMS Spam Detector
 
-#Features
+This repository contains the code for an SMS Spam Detector built using Python, NLTK, and scikit-learn. The application preprocesses SMS messages to remove stopwords, vectorizes the text using `CountVectorizer`, and uses a trained logistic regression model to predict whether a message is spam or not.
 
-Text Preprocessing: Tokenizes SMS messages, removes punctuation, and filters out stopwords.
-Vectorization: Converts text data into numerical features using CountVectorizer with a maximum of 2000 features and n-grams (1,2).
-Model Training: Uses logistic regression for binary classification (spam vs. ham).
-Interactive Interface: Built with Streamlit to provide a user-friendly interface for entering SMS messages and displaying predictions
+## Features
 
-#Installation
+- **Text Preprocessing**: Tokenizes SMS messages, removes punctuation, and filters out stopwords.
+- **Vectorization**: Converts text data into numerical features using `CountVectorizer` with a maximum of 2000 features and n-grams (1,2).
+- **Model Training**: Uses logistic regression for binary classification (spam vs. ham).
+- **Interactive Interface**: Built with Streamlit to provide a user-friendly interface for entering SMS messages and displaying predictions.
 
-1. Clone the repository:
+## Installation
 
-git clone https://github.com/yourusername/sms-spam-detector.git
-cd sms-spam-detector
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/sms-spam-detector.git
+    cd sms-spam-detector
+    ```
 
-2. Install the required packages:
+2. **Install the required packages**:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-pip install -r requirements.txt
+3. **Download NLTK stopwords**:
+    ```python
+    import nltk
+    nltk.download('stopwords')
+    nltk.download('punkt')
+    ```
 
-3. Download NLTK stopwords:
+4. **Ensure SSL certificates are available**:
+    Set the `SSL_CERT_FILE` environment variable if necessary:
+    ```python
+    import os
+    os.environ["SSL_CERT_FILE"]= "/path/to/your/certificate.pem"
+    ```
 
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
+## Usage
 
-4.Ensure SSL certificates are available:
-Set the SSL_CERT_FILE environment variable if necessary:
+1. **Run the Streamlit app**:
+    ```bash
+    streamlit run app.py
+    ```
 
-import os
-os.environ["SSL_CERT_FILE"]= "/path/to/your/certificate.pem"
+2. **Enter an SMS message** in the text input box and receive a prediction indicating whether the message is spam or not.
 
+## Code Overview
 
-#Usage
+- **data**: Contains the `spam_data.csv` file used for training the model.
+- **app.py**: Main script to run the Streamlit app.
+- **model.pkl**: Pickle file containing the trained logistic regression model and `CountVectorizer`.
+- **utils.py**: Contains helper functions for text preprocessing and model prediction.
 
+## Model Training
 
-1. Run the Streamlit app:
+The logistic regression model was trained using a dataset of SMS messages labeled as spam or ham. The text was preprocessed to remove stopwords and vectorized using `CountVectorizer`. The model was then trained and saved as a pickle file (`model.pkl`) for deployment.
 
-streamlit run app.py
-
-2.Enter an SMS message in the text input box and receive a prediction indicating whether the message is spam or not.
-
-#Code Overview
-
-data: Contains the spam_data.csv file used for training the model.
-app.py: Main script to run the Streamlit app.
-model.pkl: Pickle file containing the trained logistic regression model and CountVectorizer.
-utils.py: Contains helper functions for text preprocessing and model prediction.
-Model Training
-
-The logistic regression model was trained using a dataset of SMS messages labeled as spam or ham. The text was preprocessed to remove stopwords and vectorized using CountVectorizer. The model was then trained and saved as a pickle file (model.pkl) for deployment.
-
-#Contributing
+## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
-#License
+## License
 
 This project is licensed under the MIT License.
 
-#Acknowledgments
+## Acknowledgments
 
-This project uses Streamlit, NLTK, and scikit-learn.
-
-
-
+- The dataset used for training the model was sourced from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection).
+- This project uses [Streamlit](https://www.streamlit.io/), [NLTK](https://www.nltk.org/), and [scikit-learn](https://scikit-learn.org/).
