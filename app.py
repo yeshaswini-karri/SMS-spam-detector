@@ -3,6 +3,10 @@ import pandas as pd
 import pickle
 import warnings
 from sklearn.exceptions import InconsistentVersionWarning
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
+
 
 warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
 import nltk
@@ -50,3 +54,4 @@ with open('model.pkl', 'rb') as file:
     st.subheader("")
     st.subheader("The prediction probabilities are:")
     st.write(y_pred_proba)
+
